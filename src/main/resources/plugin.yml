@@ -1,0 +1,4 @@
+name: DragonDrops-plugin
+version: 1.0
+main: me.minecraft.plugin.dragonDropsPlugin.DragonDropsPlugin
+api-version: 1.21

@@ -1,5 +1,5 @@
-name: DragonDrops-plugin
+name: DragonWings-plugin
 version: 1.0
-main: me.minecraft.plugin.dragonDropsPlugin.DragonDropsPlugin
+main: me.minecraft.plugin.dragonWingsPlugin.DragonWingsPlugin
 api-version: 1.21
 description: Ender Dragon will drop an Elytra when defeated

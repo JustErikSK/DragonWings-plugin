@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.minecraft.plugin</groupId>
-    <artifactId>dragondrops-plugin</artifactId>
+    <artifactId>dragonwings-plugin</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>dragondrops-plugin</name>
+    <name>dragonwings-plugin</name>
 
     <properties>
         <java.version>21</java.version>

@@ -1,5 +1,5 @@
 (WIP)
-# DragonDrops Plugin
+# DragonWings Plugin
 Ender Dragons drop elytra when defeated.
 
 **INSTALATION:**

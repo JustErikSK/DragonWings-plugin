@@ -3,7 +3,7 @@ Ender Dragons drop elytra when defeated.
 
 **INSTALATION:**
 
-1. Use one of these options to download BatMembranes plugin:
+1. Use one of these options to download DragonWings plugin:
 - [GitHub releases] https://github.com/JustErikSK/DragonWings-plugin/releases
 - [Spigot] https://www.spigotmc.org/resources/dragon-wings.120977/
 - [CurseForge] https://www.curseforge.com/minecraft/bukkit-plugins/dragon-wings

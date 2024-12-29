@@ -10,8 +10,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
 import java.util.Random;
 
 public final class DragonWingsPlugin extends JavaPlugin implements Listener {
@@ -44,7 +46,11 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
         }
         if (num <= elytra_pe) {
             if (ent.getType() == EntityType.ENDER_DRAGON) {
-                e.getDrops().add(new ItemStack(Material.ELYTRA, elytra_am));
+                ItemStack elytra = new ItemStack(Material.ELYTRA, elytra_am);
+                ItemMeta itemStackMeta = elytra.getItemMeta();
+                itemStackMeta.setDisplayName(ChatColor.GOLD + "Dragon Wings");
+                elytra.setItemMeta(itemStackMeta);
+                e.getDrops().add(elytra);
             }
         }
     }

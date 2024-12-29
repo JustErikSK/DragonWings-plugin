@@ -1,0 +1,13 @@
+# Configuration file for DragonWings plugin
+# You can set your own drop percentages and drop amounts here
+# If you set a number that's more/less than the set maximum/minimum, plugin will automatically use the default value
+
+# ELYTRA DROP PERCENTAGE
+# This will apply to all drops
+# (Default = 100; Min = 1; Max = 100)
+elytra_drop_percentage: 100
+
+# ELYTRA DROP AMOUNT
+# This will apply to all drops
+# (Default = 1; Min = 1; Max = 3)
+elytra_drop_amount: 1

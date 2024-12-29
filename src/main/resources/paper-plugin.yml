@@ -1,5 +1,5 @@
 name: DragonWings-plugin
-version: '1.0.1'
+version: '1.1'
 main: me.minecraft.plugin.dragonWingsPlugin.DragonWingsPlugin
 api-version: '1.21'
 description: Ender Dragon will drop an Elytra when defeated

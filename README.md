@@ -1,5 +1,5 @@
 # DragonWings Plugin
-Ender Dragons drop elytra when defeated.
+Ender Dragons drop elytra when defeated. There's 100% for 1 elytra by default, this can be changed in configuration file
 
 **INSTALATION:**
 
@@ -9,5 +9,3 @@ Ender Dragons drop elytra when defeated.
 - [CurseForge] https://www.curseforge.com/minecraft/bukkit-plugins/dragon-wings
 - [Modrinth] https://modrinth.com/plugin/dragon-wings
 2. Drop the file in your server's plugins folder and start your server, plugin will automatically load.
-
-## Ender Dragons have a 100% chance to drop elytra.

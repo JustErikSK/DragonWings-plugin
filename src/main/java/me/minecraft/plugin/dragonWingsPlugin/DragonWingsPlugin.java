@@ -48,7 +48,7 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
             if (ent.getType() == EntityType.ENDER_DRAGON) {
                 ItemStack elytra = new ItemStack(Material.ELYTRA, elytra_am);
                 ItemMeta itemStackMeta = elytra.getItemMeta();
-                itemStackMeta.setDisplayName(ChatColor.GOLD + "Dragon Wings");
+                itemStackMeta.setDisplayName(ChatColor.GOLD + "Dragon's Wings");
                 elytra.setItemMeta(itemStackMeta);
                 e.getDrops().add(elytra);
             }

@@ -39,7 +39,7 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
         int elytra_am = this.getConfig().getInt("elytra_drop_amount", 1);
 
         if (elytra_pe > 100 || elytra_pe < 1) {
-            elytra_pe = 10;
+            elytra_pe = 100;
         }
         if (elytra_am > 3 || elytra_am < 1) {
             elytra_am = 1;

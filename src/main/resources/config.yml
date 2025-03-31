@@ -11,3 +11,7 @@ elytra_drop_percentage: 100
 # This will apply to all drops
 # (Default = 1; Min = 1; Max = 3)
 elytra_drop_amount: 1
+
+# Last updated for DragonWings v1.1.1
+# Version 1.1.1 works for MC versions 1.21 - 1.21.5
+# End of config file

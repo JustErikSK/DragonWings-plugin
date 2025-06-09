@@ -1,9 +1,6 @@
 package me.minecraft.plugin.dragonWingsPlugin;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Chest;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
@@ -60,10 +57,15 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
             }
         }
 
+        int x = 0;
+        int z = 0;
+        World world = ent.getWorld();
+        int y = world.getHighestBlockYAt(x, z);
+
         if (elytra_pla.equals("GROUND")) { // GROUND option for drop placement
-            ent.getWorld().dropItem(new Location(ent.getWorld(), 0, 60, 0), new ItemStack(Material.ELYTRA));
+            ent.getWorld().dropItem(new Location(world, x+0.5, y+1, z+0.5), new ItemStack(Material.ELYTRA));
         } else if (elytra_pla.equals("CHEST")) { // CHEST option for drop placement
-            Location chestLocation = new Location(ent.getWorld(), 0, 60, 0);
+            Location chestLocation = new Location(world, x+0.5, y+1, z+0.5);
             chestLocation.getBlock().setType(Material.CHEST);
             Chest chest = (Chest) chestLocation.getBlock().getState();
             chest.getInventory().addItem(new ItemStack(Material.ELYTRA));

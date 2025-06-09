@@ -1,17 +1,22 @@
 # Configuration file for DragonWings plugin
-# You can set your own drop percentages and drop amounts here
+# You can set your own drop percentage, drop amount and drop placement for elytra here
 # If you set a number that's more/less than the set maximum/minimum, plugin will automatically use the default value
 
 # ELYTRA DROP PERCENTAGE
-# This will apply to all drops
 # (Default = 100; Min = 1; Max = 100)
 elytra_drop_percentage: 100
 
 # ELYTRA DROP AMOUNT
-# This will apply to all drops
 # (Default = 1; Min = 1; Max = 3)
 elytra_drop_amount: 1
 
-# Last updated for DragonWings v1.1.1
+# ELYTRA DROP PLACEMENT
+# (Default = GROUND; Options = GROUND, CHEST, INVENTORY)
+# GROUND option: Elytra will drop at pre-set coordinates on the ground
+# CHEST option: Elytra will be put in a chest that will spawn at pre-set coordinates
+# INVENTORY option: Elytra will be given to the inventory of the player that killed the dragon
+elytra_drop_placement: GROUND
+
+# Last updated for DragonWings v1.2
 # Version 1.1.1 works for MC versions 1.21 - 1.21.5
 # End of config file

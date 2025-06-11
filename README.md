@@ -1,5 +1,9 @@
 # DragonWings Plugin
-Ender Dragons drop elytra when defeated. There's 100% for 1 elytra by default, this can be changed in configuration file
+Ender Dragons drop elytra when defeated. There's 100% for 1 elytra by default, this can be changed in configuration file.
+
+Drop placement can now be also configured! Elytra can now spawn frozen above the portal, in a chest or in your inventory!
+
+You can find detailed information about this plugin on our Wiki https://with-rage-studios-plugins.fandom.com/wiki/Dragon_Wings
 
 **INSTALATION:**
 

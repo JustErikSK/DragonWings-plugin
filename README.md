@@ -13,5 +13,6 @@ You can find detailed information about this plugin on our Wiki https://with-rag
 - [CurseForge] https://www.curseforge.com/minecraft/bukkit-plugins/dragon-wings
 - [Modrinth] https://modrinth.com/plugin/dragon-wings
 2. Drop the file in your server's plugins folder and start your server, plugin will automatically load.
+3. After first server start with our plugin, new folder with a config file will be created in your server's plugins folder. You can change the drop percentage, drop amount and drop placement there.
 
 This plugin works on Minecraft versions 1.21 - 1.21.5

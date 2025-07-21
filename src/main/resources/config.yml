@@ -17,6 +17,6 @@ elytra_drop_amount: 1
 # INVENTORY option: Elytra will be given to the inventory of the player that killed the dragon
 elytra_drop_placement: GROUND
 
-# Last updated for DragonWings v1.2.2
-# Version 1.2.2 works for MC versions 1.21 - 1.21.7
+# Last updated for DragonWings v1.2.3
+# Version 1.2.3 works for MC versions 1.21 - 1.21.8
 # End of config file

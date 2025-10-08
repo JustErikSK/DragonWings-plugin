@@ -22,14 +22,19 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "DragonDrops >> Plugin has been enabled!");
         this.getServer().getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
+
+        getLogger().info("Dragon Drops is loading drop percentages and amounts...");
+        getLogger().info("Elytra's drop placement is being loaded...");
 
         FileConfiguration config = this.getConfig();
         config.addDefault("elytra_drop_percentage", 100);
         config.addDefault("elytra_drop_amount", 1);
         config.addDefault("elytra_drop_placement", "GROUND");
+
+        getLogger().info("Config loaded!");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "Dragon Drops >> Plugin has been enabled!");
     }
 
     @EventHandler

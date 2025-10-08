@@ -60,6 +60,7 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
                 if (elytra_pla.equals("GROUND")) { // GROUND option for drop placement
                     Item item = ent.getWorld().dropItem(new Location(world, x+0.5, y + 2, z+0.5), new ItemStack(Material.ELYTRA, elytra_am));
                     item.setGravity(false);
+                    item.setGlowing(true);
                     item.setVelocity(new Vector(0, 0, 0));
                     item.setPickupDelay(40);
                     assert killer != null;

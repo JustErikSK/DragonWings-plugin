@@ -25,7 +25,7 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
 
-        getLogger().info("Dragon Drops is loading drop percentages and amounts...");
+        getLogger().info("Dragon Wings is loading drop percentages and amounts...");
         getLogger().info("Elytra's drop placement is being loaded...");
 
         FileConfiguration config = this.getConfig();

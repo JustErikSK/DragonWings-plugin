@@ -1,7 +1,9 @@
 package me.minecraft.plugin.dragonWingsPlugin;
 
 import org.bukkit.*;
+import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
+import org.bukkit.block.Container;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
@@ -10,11 +12,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
@@ -55,34 +59,73 @@ public final class DragonWingsPlugin extends JavaPlugin implements Listener {
             elytra_am = 1;
         }
 
+        final int finalElytraAm = elytra_am;
+
         int x = 0;
         int z = 0;
         World world = ent.getWorld();
-        int y = world.getHighestBlockYAt(x, z);
 
         if (num <= elytra_pe) {
             if (ent.getType() == EntityType.ENDER_DRAGON) {
-                if (elytra_pla.equals("GROUND")) { // GROUND option for drop placement
-                    Item item = ent.getWorld().dropItem(new Location(world, x+0.5, y + 2, z+0.5), new ItemStack(Material.ELYTRA, elytra_am));
-                    item.setGravity(false);
-                    item.setGlowing(true);
-                    item.setVelocity(new Vector(0, 0, 0));
-                    item.setPickupDelay(40);
-                    assert killer != null;
-                    killer.sendMessage(ChatColor.GOLD + "The Dragon's Elytra spawned above the portal!");
+                if (elytra_pla.equalsIgnoreCase("GROUND")) { // GROUND option for placement
+                    Location targetXZ = new Location(world, x, 0, z);
+
+                    Bukkit.getRegionScheduler().execute(this, targetXZ, () -> {
+                        int highestY = world.getHighestBlockYAt(targetXZ);
+                        int minY = world.getMinHeight();
+                        if (highestY <= minY + 1) {
+                            highestY = ent.getLocation().getBlockY();
+                        }
+
+                        Location dropLoc = new Location(world, x + 0.5, highestY + 2, z + 0.5);
+                        Item item = world.dropItem(dropLoc, new ItemStack(Material.ELYTRA, finalElytraAm));
+                        item.setGravity(false);
+                        item.setGlowing(true);
+                        item.setVelocity(new Vector(0, 0, 0));
+                        item.setPickupDelay(40);
+                    });
+                    if (killer != null) killer.sendMessage(ChatColor.GOLD + "The Dragon's Elytra spawned above the portal!");
                 }
-                else if (elytra_pla.equals("CHEST")) { // CHEST option for drop placement
-                    Location chestLocation = new Location(world, x, y + 2, z);
-                    chestLocation.getBlock().setType(Material.CHEST);
-                    Chest chest = (Chest) chestLocation.getBlock().getState();
-                    chest.getInventory().addItem(new ItemStack(Material.ELYTRA, elytra_am));
-                    assert killer != null;
-                    killer.sendMessage(ChatColor.GOLD + "A chest spawned above the portal with the Dragon's Elytra!");
+                else if (elytra_pla.equalsIgnoreCase("CHEST")) { // CHEST option for placement
+                    Location targetXZ = new Location(world, x, 0, z);
+
+                    Bukkit.getRegionScheduler().execute(this, targetXZ, () -> {
+                        int highestY = world.getHighestBlockYAt(targetXZ);
+                        int minY = world.getMinHeight();
+                        if (highestY <= minY + 1) highestY = ent.getLocation().getBlockY();
+
+                        Location chestLoc = new Location(world, x, highestY + 2, z);
+                        chestLoc.getBlock().setType(Material.CHEST, false);
+
+                        Bukkit.getRegionScheduler().runDelayed(this, chestLoc, task -> {
+                            BlockState state = chestLoc.getBlock().getState(false);
+                            if (!(state instanceof Container container)) {
+                                getLogger().warning("Expected Container at " + chestLoc + " but got " + state.getType());
+                                return;
+                            }
+
+                            Inventory inv = container.getInventory();
+                            getLogger().info("Chest size=" + inv.getSize() + ", finalElytraAm=" + finalElytraAm);
+
+                            for (int i = 0; i < finalElytraAm; i++) {
+                                Map<Integer, ItemStack> leftover = inv.addItem(new ItemStack(Material.ELYTRA, 1));
+                                if (!leftover.isEmpty()) {
+                                    getLogger().warning("Could not insert elytra into chest, leftovers=" + leftover);
+                                    break;
+                                }
+                            }
+                            state.update(true, false);
+                            getLogger().info("Chest contents now: " + java.util.Arrays.toString(inv.getContents()));
+                        }, 2L);
+                    });
+                    if (killer != null) killer.sendMessage(ChatColor.GOLD + "A chest spawned above the portal with the Dragon's Elytra!");
                 }
-                else if (elytra_pla.equals("INVENTORY")) { // INVENTORY option for drop placement
+                else if (elytra_pla.equalsIgnoreCase("INVENTORY")) { // INVENTORY option for placement
                     if (killer instanceof Player player) {
-                        player.getInventory().addItem(new ItemStack(Material.ELYTRA, elytra_am));
-                        killer.sendMessage(ChatColor.GOLD + "The Dragon's Elytra has spawned in your inventory!");
+                        player.getScheduler().run(this, task -> {
+                            player.getInventory().addItem(new ItemStack(Material.ELYTRA, finalElytraAm));
+                            player.sendMessage(ChatColor.GOLD + "The Dragon's Elytra has spawned in your inventory!");
+                        }, null);
                     }
                 }
             }

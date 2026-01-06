@@ -17,5 +17,5 @@ elytra_drop_amount: 1
 # INVENTORY option: Elytra will be given to the inventory of the player that killed the dragon
 elytra_drop_placement: GROUND
 
-# Version 1.3.1 works for MC versions 1.21 - 1.21.11
+# Version 1.3.2 works for MC versions 1.21 - 1.21.11
 # End of config file

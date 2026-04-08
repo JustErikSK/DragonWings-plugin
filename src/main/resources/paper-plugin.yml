@@ -1,6 +1,6 @@
 name: DragonWings-plugin
-version: '1.3.2'
+version: '1.3.3'
 main: me.minecraft.plugin.dragonWingsPlugin.DragonWingsPlugin
-api-version: '1.21'
+api-version: '26.1'
 description: Ender Dragon will drop an Elytra when defeated
 folia-supported: true

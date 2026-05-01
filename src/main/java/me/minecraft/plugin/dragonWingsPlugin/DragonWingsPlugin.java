@@ -2,7 +2,6 @@ package me.minecraft.plugin.dragonWingsPlugin;
 
 import org.bukkit.*;
 import org.bukkit.block.BlockState;
-import org.bukkit.block.Chest;
 import org.bukkit.block.Container;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
@@ -14,12 +13,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 
 public final class DragonWingsPlugin extends JavaPlugin implements Listener {
